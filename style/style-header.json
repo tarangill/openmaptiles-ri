@@ -12,19 +12,15 @@
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "tiles": ["https://tiles.maps.tarangill.com/tiles/{z}/{x}/{y}.pbf"]
+      "tiles": ["https://maps.tarangill.com/tiles/{z}/{x}/{y}.pbf"]
     },
     "terrarium": {
   	"type": "raster-dem",
-  	"tiles": ["https://terrain.maps.tarangill.com/{z}/{x}/{y}.png"],
+  	"tiles": ["https://maps.tarangill.com/terrain/{z}/{x}/{y}.png"],
   	"minzoom": 0,
   	"maxzoom": 10,
   	"tileSize": 256,
   	"encoding": "terrarium"
-    },
-    "attribution": {
-      "attribution": "<a href=\"https://www.openmaptiles.org/\" target=\"_blank\">&copy; OpenMapTiles</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
-      "type": "vector"
     }
   },
   "glyphs": "{fontstack}/{range}.pbf",
