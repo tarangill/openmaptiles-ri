@@ -27,7 +27,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-field": "{name:en}\n{name:nonlatin}",
         "visibility": "visible",
         "symbol-spacing": 150,
         "text-max-width": 10,
@@ -111,7 +111,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-field": "{name:en}\n{name:nonlatin}",
         "visibility": "visible",
         "text-max-width": 8
       },
@@ -154,7 +154,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-field": "{name:en}\n{name:nonlatin}",
         "visibility": "visible",
         "text-anchor": "bottom",
         "text-offset": [
@@ -203,7 +203,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-padding": 2,
         "text-transform": "none",
@@ -266,7 +266,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-field": "{name:en}\n{name:nonlatin}",
         "visibility": "visible",
         "icon-offset": [
           0,
@@ -350,7 +350,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}\n{name:nonlatin}",
+        "text-field": "{name:en}\n{name:nonlatin}",
         "visibility": "visible",
         "icon-offset": [
           0,
@@ -425,7 +425,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-max-width": 6.25,
         "text-transform": "none"
@@ -478,7 +478,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-max-width": 6.25,
         "text-transform": "none"
@@ -547,7 +547,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-max-width": 6.25,
         "text-transform": "none"
@@ -616,7 +616,7 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-max-width": 6.25,
         "text-transform": "none"

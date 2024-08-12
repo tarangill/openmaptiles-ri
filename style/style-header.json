@@ -12,7 +12,15 @@
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "mbtiles:///data/tiles.mbtiles"
+      "tiles": ["https://tiles.maps.tarangill.com/tiles/{z}/{x}/{y}.pbf"]
+    },
+    "terrarium": {
+  	"type": "raster-dem",
+  	"tiles": ["https://terrain.maps.tarangill.com/{z}/{x}/{y}.png"],
+  	"minzoom": 0,
+  	"maxzoom": 10,
+  	"tileSize": 256,
+  	"encoding": "terrarium"
     },
     "attribution": {
       "attribution": "<a href=\"https://www.openmaptiles.org/\" target=\"_blank\">&copy; OpenMapTiles</a> <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\">&copy; OpenStreetMap contributors</a>",
@@ -22,6 +30,7 @@
   "glyphs": "{fontstack}/{range}.pbf",
   "sprite": "sprite",
   "layers": [
+	  
     {
       "id": "background",
       "type": "background",
@@ -29,7 +38,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "background-color": "#f2efe9"
+        "background-color": "#EFEFEF"
       }
     }
   ]

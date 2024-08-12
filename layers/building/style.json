@@ -5,12 +5,18 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "building",
-      "minzoom": 12,
+      "minzoom": 14,
       "maxzoom": 24,
       "layout": {
         "visibility": "visible"
       },
       "paint": {
+	"fill-opacity": {
+	  "stops": [ 
+	     [14, 0.1],
+	     [18, 1]
+	  ]
+	},
         "fill-color": {
           "stops": [
             [

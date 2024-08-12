@@ -1,25 +1,31 @@
 # This version must match the MAKE_DC_VERSION value below
 version: "3"
 
-volumes:
-  pgdata:
+#volumes:
+#  pgdata:
+
+# networks:
+#   postgres:
+#     driver: bridge
 
 networks:
-  postgres:
+  mydockers_default:
     driver: bridge
-
+    external: true
+    
 services:
 
   postgres:
+    container_name: postgres${INSTANCE_NUMBER}
     image: "${POSTGIS_IMAGE:-openmaptiles/postgis}:${TOOLS_VERSION}"
     # Use "command: postgres -c jit=off" for PostgreSQL 11+ because of slow large MVT query processing
     # Use "shm_size: 512m" if you want to prevent a possible 'No space left on device' during 'make generate-tiles-pg'
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ../data/openmaptiles/pgdata:/var/lib/postgresql/data
     networks:
-      - postgres
-    ports:
-      - "${PGPORT:-5432}:${PGPORT:-5432}"
+      - mydockers_default
+    # ports:
+    #   - "${PGPORT:-5432}:${PGPORT:-5432}"
     env_file: .env
     environment:
       # postgress container uses old variable names
@@ -29,12 +35,14 @@ services:
       PGPORT: ${PGPORT:-5432}
 
   import-data:
+    container_name: import-data${INSTANCE_NUMBER}
     image: "openmaptiles/import-data:${TOOLS_VERSION}"
     env_file: .env
     networks:
-      - postgres
+      - mydockers_default
 
   openmaptiles-tools: &openmaptiles-tools
+    container_name: openmaptiles-tools${INSTANCE_NUMBER}
     image: "openmaptiles/openmaptiles-tools:${TOOLS_VERSION}"
     env_file: .env
     environment:
@@ -57,28 +65,30 @@ services:
       PGPORT: ${PGPORT:-5432}
       MBTILES_FILE: ${MBTILES_FILE}
     networks:
-      - postgres
+      - mydockers_default
     volumes:
       - .:/tileset
-      - ./data:/import
-      - ./data:/export
+      - ../data/openmaptiles:/export
       - ./build/sql:/sql
       - ./build:/mapping
-      - ./cache:/cache
+      - ../data/openmaptiles/cache:/cache
       - ./style:/style
+      - ../data/osm-data:/import
 
   update-osm:
+    container_name: update-osm${INSTANCE_NUMBER}
     <<: *openmaptiles-tools
     command: import-update
 
   generate-changed-vectortiles:
+    container_name: generate-changed-vectortiles${INSTANCE_NUMBER}
     image: "openmaptiles/generate-vectortiles:${TOOLS_VERSION}"
     command: ./export-list.sh
     volumes:
       - ./data:/export
       - ./build/openmaptiles.tm2source:/tm2source
     networks:
-      - postgres
+      - mydockers_default
     env_file: .env
     environment:
       MBTILES_NAME: ${MBTILES_FILE}
@@ -90,12 +100,13 @@ services:
       PGPORT: ${PGPORT:-5432}
 
   generate-vectortiles:
+    container_name: generate-vectortiles${INSTANCE_NUMBER}
     image: "openmaptiles/generate-vectortiles:${TOOLS_VERSION}"
     volumes:
-      - ./data:/export
+      - ../data/openmaptiles:/export
       - ./build/openmaptiles.tm2source:/tm2source
     networks:
-      - postgres
+      - mydockers_default
     env_file: .env
     environment:
       MBTILES_NAME: ${MBTILES_FILE}
@@ -111,6 +122,7 @@ services:
       PGPORT: ${PGPORT:-5432}
 
   postserve:
+    container_name: postserve${INSTANCE_NUMBER}
     image: "openmaptiles/openmaptiles-tools:${TOOLS_VERSION}"
     command: "postserve ${TILESET_FILE} --verbose --serve=${OMT_HOST:-http://localhost}:${PPORT:-8090}"
     env_file: .env
@@ -118,26 +130,31 @@ services:
       TILESET_FILE: ${TILESET_FILE}
     networks:
       - postgres
-    ports:
-      - "${PPORT:-8090}:${PPORT:-8090}"
+    # ports:
+    #   - "3090:${PPORT:-8090}"
     volumes:
       - .:/tileset
 
   maputnik_editor:
     image: "maputnik/editor"
-    ports:
-      - "8088:8888"
+    # ports:
+    #   - "8088:8888"
 
   tileserver-gl:
+    container_name: tileserver-gl${INSTANCE_NUMBER}
     image: "maptiler/tileserver-gl:latest"
     command:
       - --port
       - "${TPORT:-8080}"
       - --config
       - "/style/config.json"
-    ports:
-      - "${TPORT:-8080}:${TPORT:-8080}"
+    # ports:
+    #   - "${TPORT:-8080}:${TPORT:-8080}"
     volumes:
-      - ./data:/data
+      - ../data/openmaptiles:/data
       - ./style:/style
       - ./build:/build
+      - ../data/terrarium:/terrarium
+    networks:
+      - mydockers_default
+

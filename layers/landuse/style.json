@@ -18,8 +18,6 @@
           ],
           "railway",
           "#ebdbe8",
-          "residential",
-          "#e0dfdf",
           "cemetery",
           "#aacbaf",
           "military",
@@ -67,7 +65,6 @@
           "railway",
           "cemetery",
           "military",
-          "residential",
           "commercial",
           "industrial",
           "garages",
@@ -91,47 +88,6 @@
         ]
       ],
       "order": 1
-    },
-    {
-      "id": "landuse_residential",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "landuse",
-      "minzoom": 6,
-      "maxzoom": 24,
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": {
-          "stops": [
-            [
-              7,
-              "#d0d0d0"
-            ],
-            [
-              11,
-              "#dddddd"
-            ],
-            [
-              12,
-              "#e0dfdf"
-            ]
-          ]
-        }
-      },
-      "metadata": {},
-      "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "residential",
-          "suburbs",
-          "neighbourhood"
-        ]
-      ],
-      "order": 2
     },
     {
       "id": "landuse_class_pattern",
@@ -189,8 +145,6 @@
           "#c6b3c3",
           "military",
           "#ff5555",
-          "residential",
-          "#b9b9b9",
           "commercial",
           "#f2dad9",
           "industrial",
@@ -233,8 +187,6 @@
           0.7,
           "military",
           2,
-          "residential",
-          0.5,
           "commercial",
           0.5,
           "industrial",
@@ -295,7 +247,6 @@
           "class",
           "railway",
           "military",
-          "residential",
           "commercial",
           "industrial",
           "retail",
