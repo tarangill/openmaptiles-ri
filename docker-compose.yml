@@ -129,7 +129,7 @@ services:
     environment:
       TILESET_FILE: ${TILESET_FILE}
     networks:
-      - postgres
+      - mydockers_default
     # ports:
     #   - "3090:${PPORT:-8090}"
     volumes:
