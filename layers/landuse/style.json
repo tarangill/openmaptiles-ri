@@ -5,7 +5,7 @@
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "minzoom": 7,
+      "minzoom": 14,
       "layout": {
         "visibility": "visible"
       },
@@ -93,6 +93,7 @@
       "id": "landuse_class_pattern",
       "type": "fill",
       "source": "openmaptiles",
+      "minzoom": 14,
       "source-layer": "landuse",
       "layout": {
         "visibility": "visible"
@@ -130,7 +131,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "minzoom": 13,
+      "minzoom": 14,
       "layout": {
         "visibility": "visible"
       },
@@ -271,7 +272,7 @@
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "minzoom": 13,
+      "minzoom": 14,
       "layout": {
         "line-cap": "square",
         "line-join": "round",

@@ -411,7 +411,7 @@
             "source":"terrarium",
             "order": 19.1,
             "minzoom": 4,
-            "maxzoom": 13,
+            "maxzoom": 11,
 	    "paint": {
 		    "hillshade-exaggeration": 0.3,
 		    "hillshade-accent-color": "rgba(0,0,0,1)" 
