@@ -33,6 +33,7 @@ services:
       POSTGRES_USER: ${PGUSER:-openmaptiles}
       POSTGRES_PASSWORD: ${PGPASSWORD:-openmaptiles}
       PGPORT: ${PGPORT:-5432}
+    restart: unless-stopped
 
   import-data:
     container_name: import-data${INSTANCE_NUMBER}
@@ -134,6 +135,7 @@ services:
     #   - "3090:${PPORT:-8090}"
     volumes:
       - .:/tileset
+    restart: unless-stopped
 
   maputnik_editor:
     image: "maputnik/editor"
@@ -157,4 +159,5 @@ services:
       - ../data/terrarium:/terrarium
     networks:
       - mydockers_default
+    restart: unless-stopped
 
